@@ -1,11 +1,11 @@
-import json from './parser';
-import read from './reader';
+import json from "./parser";
+import read from "./reader";
+import GameSaving from "./GameSaving";
 
 export default class GameSavingLoader {
   static load() {
-    const value = read()
+    return read()
       .then((data) => json(data))
-      .then((data) => JSON.parse(data));
-    return value;
+      .then((data) => new GameSaving(JSON.parse(data)));
   }
 }
